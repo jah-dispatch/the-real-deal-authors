@@ -1,0 +1,19 @@
+[
+  {
+    "id": "b-001",
+    "author_name": "Jack Harper",
+    "book_title": "...and a Bag of Chips",
+    "publication_year": 2024,
+    "genres": ["Romance", "Contemporary", "Romantic Comedy"],
+    "target_audience": "Adult",
+    "own_voices_status": "Verified",
+    "authenticity_source": "https://harperville.me/",
+    "author_image": "assets/authors/jack-harper-bio.jpg",
+    "book_cover": "assets/books/bag-of-chips-cover.jpg",
+    "synopsis": "Judah Wilder just wanted to take the spotlight, instead of remaining the man behind the camera each day. But sometimes, our egoes might mismatch with reality.",
+    "links": {
+      "amazon": "https://harperville.me/books/and-a-bag-of-chips",
+      "author_website": "https://harperville.me/"
+    }
+  }
+]

@@ -1,0 +1,577 @@
+/* =========================================
+   PROJECT NEVER SETTLE: MASTER STYLESHEET
+   ========================================= */
+
+:root {
+    /* The Emerald Protocol Palette */
+    --emerald-deep: #003b22;     /* Dark forest/emerald background */
+    --emerald-magic: #00ff7f;    /* Neon electric glow */
+    --gold-shiny: #ffd700;       /* Shiny gold for buttons */
+    --gold-hover: #ffea70;       /* Lighter gold for interaction */
+    --ruby-red: #e0115f;         /* Borders and accents */
+    --text-light: #f4f4f4;       /* Warm white for readable text */
+    
+    /* Typography */
+    --font-bangers: 'Bangers', cursive;
+    --font-noto: 'Noto Serif', serif;
+}
+
+/* Base Accessibility & Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scroll for the Back to Top button */
+}
+
+body {
+    background-color: var(--emerald-deep);
+    color: var(--text-light);
+    font-family: var(--font-noto);
+    line-height: 1.6; /* Prevents text wall effect */
+}
+
+/* Typography Overrides */
+h1, h2, h3, .site-title, .gold-btn {
+    font-family: var(--font-bangers);
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   HEADER & NAVIGATION
+   ========================================= */
+/* --- THE JAGGED HEADER FIX --- */
+/* --- THE JAGGED HEADER FIX --- */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: transparent; /* Makes the restrictive box invisible */
+}
+
+/* This phantom element holds the image and hangs over the edge */
+.sticky-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250px; /* This makes it hang down over the hero section. Adjust if needed! */
+    background-image: url('assets/images/emerald-header.png');
+    background-size: cover;
+    background-position: bottom center; /* Forces the jagged bottom teeth to ALWAYS show */
+    z-index: -1; /* Tucks the crystals perfectly BEHIND your text and nav links */
+    pointer-events: none; /* Ensures you can still click the things underneath it */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+}
+
+.site-title {
+    font-size: 2.5rem;
+    color: var(--emerald-magic);
+    text-shadow: 0 0 10px rgba(0, 255, 127, 0.5);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.main-nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-family: var(--font-bangers);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--gold-shiny);
+}
+
+/* =========================================
+   BUTTONS & INTERACTIVITY (The Gold Standard)
+   ========================================= */
+.gold-btn {
+    background-color: var(--gold-shiny);
+    color: #000;
+    border: 2px solid var(--ruby-red);
+    padding: 12px 24px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 8px; /* Slightly rounded edges */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); /* Gold glow */
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    min-height: 44px; /* Mobile tap target safety */
+}
+
+.gold-btn:hover {
+    background-color: var(--gold-hover);
+    transform: scale(1.11); /* The 111% expansion */
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+}
+/* =========================================
+   UNIVERSAL HAMBURGER NAVIGATION & ARROW
+   ========================================= */
+
+.header-content {
+    position: relative; /* Allows us to position the dropdown menu accurately */
+}
+
+/* The Hamburger Button (Visible on ALL screens) */
+.hamburger {
+    display: block;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    z-index: 1002;
+    position: absolute;
+    right: 5%; /* Pins it to the right side of the screen */
+    top: 25px;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 35px;
+    height: 4px;
+    margin: 6px auto;
+    background-color: var(--gold-shiny);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 5px rgba(0,0,0,0.8); /* Helps lines pop over crystals */
+}
+
+/* The Hidden Menu (Drops down when active) */
+.main-nav {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 80px; /* Drops it right below the header */
+    right: 5%; 
+    background-color: rgba(0, 59, 34, 0.98);
+    border: 2px solid var(--ruby-red);
+    border-radius: 8px;
+    padding: 20px 40px;
+    text-align: right;
+    z-index: 1001;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+}
+
+.main-nav.active {
+    display: block; /* The JS will turn this on when clicked */
+}
+
+.main-nav ul {
+    flex-direction: column; /* Stacks links vertically */
+    gap: 20px;
+}
+/* --- SITE TITLE HYPERLINK & SHADOW --- */
+.site-title a {
+    color: #da0303e1; 
+    text-decoration: none; 
+    /* The Heavy Impact Stack Shadow */
+    text-shadow: 
+        3px 3px 0px rgba(0, 0, 0, 1), 
+        8px 8px 15px rgba(0, 0, 0, 0.9); 
+    transition: color 0.3s ease;
+    
+    /* NEW: These two lines are mandatory to hold the animated underline in place */
+    position: relative; 
+    display: inline-block; 
+}
+
+.site-title a:hover {
+    color: var(--gold-shiny); 
+}
+
+/* --- THE SCREAMING ANIMATED UNDERLINE --- */
+.site-title a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -20px; /* Tucks it just beneath the bottom of the letters */
+    width: 100%;
+    height: 4px; /* A bold, thick strike */
+    background-color: var(--ruby-red); /* Ruby red for that aggressive energy */
+    box-shadow: 0 0 10px var(--ruby-red); /* The magical glow */
+    border-radius: 2px;
+    
+    /* Tells the line to run the animation below on an infinite loop */
+    animation: screaming-pulse 1.5s infinite ease-in-out;
+}
+
+/* The actual math that makes it breathe and scream */
+@keyframes screaming-pulse {
+    0% { 
+        transform: scaleX(0.85); /* Shrinks slightly inward */
+        opacity: 0.6; 
+    }
+    50% { 
+        transform: scaleX(1.05); /* Expands past the edges of the word */
+        opacity: 1; 
+        box-shadow: 0 0 25px var(--ruby-red); /* Glow gets intensely brighter */
+    }
+    100% { 
+        transform: scaleX(0.85); 
+        opacity: 0.6; 
+    }
+}
+
+/* =========================================
+   THE DESKTOP GOLDEN ARROW ANIMATION
+   ========================================= */
+.menu-arrow-container {
+    display: none; /* Hidden on mobile by default */
+}
+
+/* Only show arrow on screens larger than an iPad (768px) */
+@media (min-width: 769px) {
+    .menu-arrow-container {
+        display: block;
+        position: absolute;
+        right: 160px; /* Nudged way further to the left! */
+        top: 22px;    /* Aligned perfectly with the center of the hamburger */
+    }
+
+    .gold-arrow {
+        color: var(--gold-shiny);
+        font-size: 2rem;
+        font-family: var(--font-bangers);
+        display: inline-block;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        animation: point-to-menu 1.5s infinite ease-in-out;
+    }
+}
+
+/* The actual bouncing math */
+@keyframes point-to-menu {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(15px); } /* Pushes the arrow right, then back */
+}
+
+/* =========================================
+   THE GRID & CARDS
+   ========================================= */
+.database-container {
+    padding: 40px 5%;
+    display: grid;
+    /* Fluid Grid Magic: Automatically stacks to 1 column on phones! */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.author-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--ruby-red);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.author-card:hover {
+    transform: translateY(-5px); /* Gentle lift on hover */
+    border-color: var(--gold-shiny);
+}
+
+/* The Diamond Author Bio Photo */
+.author-bio-diamond {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px auto;
+    object-fit: cover;
+    /* CSS Clip-Path creates the precise diamond/lozenge shape */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border: 3px solid var(--emerald-magic); /* This won't show with clip-path natively, we'll use a wrapper trick later if needed, but it sets the intent */
+}
+/* --- 1. THE BOOK COVER STYLING --- */
+.book-cover-image {
+    width: 100%;
+    max-width: 200px; /* Keeps it from getting too massive */
+    height: auto;
+    margin: 0 auto 20px auto;
+    display: block;
+    border-radius: 4px;
+    border: 2px solid var(--ruby-red);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Gives it that floating 3D look */
+}
+
+/* --- 2. BUTTON OVERLAP FIX --- */
+.synopsis {
+    margin-bottom: 25px; /* This forces a gap between the text and the gold button */
+    font-size: 1rem;
+    padding: 0 10px;
+}
+
+.author-name-tag {
+    margin-bottom: 15px;
+    color: var(--gold-shiny); /* Makes the author name pop a bit more */
+}
+/* --- SEARCH TIPS & HELPER TEXT --- */
+.search-tips {
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark glass background */
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: 1px dashed var(--gold-shiny); /* Matches the Ozian empty-state styling */
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.5;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.submit-callout {
+    margin-top: 8px;
+    font-family: var(--font-bangers);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.submit-callout a {
+    color: var(--emerald-magic);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.submit-callout a:hover {
+    color: var(--gold-shiny);
+    text-decoration: underline;
+}
+/* --- 3. CENTERED FOOTER FIX --- */
+footer {
+    text-align: center; /* Forces all text in the footer to perfectly center */
+    padding: 40px 5%;
+    background-color: rgba(0, 30, 15, 0.95); /* Slightly darker than the background for contrast */
+    border-top: 2px solid var(--ruby-red);
+    margin-top: 50px; /* Pushes the footer away from the database grid */
+}
+
+.footer-links {
+    margin-top: 15px;
+}
+
+.footer-links a {
+    color: var(--emerald-magic);
+    text-decoration: none;
+    font-family: var(--font-bangers);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+/* --- 4. SCROLL TO TOP TEXT FIX --- */
+/* We use a "pseudo-element" to add the text without you having to change your HTML */
+.back-to-top::before {
+    content: "Scroll to top";
+    position: absolute;
+    top: -25px; /* Pushes the text right above the red circle */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the text perfectly over the circle */
+    font-size: 1rem;
+    color: var(--text-light);
+    white-space: nowrap;
+    font-family: var(--font-bangers);
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+/* =========================================
+   UTILITIES & ACCESSIBILITY
+   ========================================= */
+.hidden {
+    display: none !important;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--ruby-red);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 2rem;
+    font-family: var(--font-bangers);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+/* Detects user accessibility settings and tones down animations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .gold-btn:hover {
+        transform: none; /* Disables the 111% scale if motion sickness settings are on */
+    }
+}
+/* Add this to your styles.css for the Hero Section */
+.hero-section {
+    background-image: url('assets/images/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Creates a cool parallax scrolling effect */
+    padding: 100px 5%;
+    text-align: center;
+    position: relative;
+}
+/* --- SEARCH SECTION FIXES --- */
+.search-icon {
+    max-width: 150px; /* This shrinks the glass down to a normal size! */
+    height: auto;
+    margin: 0 auto 20px auto; /* Centers the icon and adds space below it */
+    display: block;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column; /* Stacks the glass, search bar, and button on top of each other */
+    align-items: center;    /* Centers everything perfectly */
+    gap: 15px;              /* Adds breathing room between the elements */
+}
+
+/* Let's make the search input box look premium too */
+.search-container input {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: 2px solid var(--ruby-red);
+    width: 90%;
+    max-width: 500px;
+    font-family: var(--font-noto);
+}
+
+/* Add this to your styles.css to make the jagged header work */
+.jagged-edge {
+    background-image: url('assets/images/emerald-header.png');
+    background-repeat: repeat-x; /* Repeats the pattern horizontally */
+    background-size: contain;
+    height: 60px; /* You can adjust this height to make the jagged teeth bigger or smaller */
+    width: 100%;
+    position: absolute;
+    bottom: -55px; /* Pulls it down so it hangs off the bottom of the sticky header */
+    left: 0;
+    z-index: 999;
+}
+/* --- ACTION ROW FIX (Photo & Button Alignment) --- */
+.author-action-row {
+    display: flex;
+    justify-content: center; /* Centers them horizontally */
+    align-items: center;     /* Perfectly aligns their vertical centers */
+    gap: 20px;               /* Adds breathing room between the photo and button */
+    margin-top: 15px;
+    flex-wrap: wrap;         /* Ensures they stack neatly on super tiny phone screens */
+}
+
+/* This overrides the old diamond styling specifically for this row */
+.author-action-row .author-bio-diamond {
+    margin: 0;           /* Removes the old centering so Flexbox can do its job */
+    width: 100px;        /* Scaled down slightly to balance with the button height */
+    height: 100px;
+}
+/* --- AUTHOR NAME HYPERLINK FIX --- */
+.author-name-link {
+    color: var(--gold-shiny);
+    text-decoration: none; /* Kills the default underline */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.author-name-link:hover {
+    color: var(--emerald-magic); /* Flips to neon green on hover */
+    text-shadow: 0 0 8px rgba(0, 255, 127, 0.6); /* Adds a magical glow */
+}
+/* =========================================
+   EMPTY STATE / NO RESULTS FOUND MESSAGE
+   ========================================= */
+#no-results-message {
+    grid-column: 1 / -1; /* This is the magic trick: it forces the box to span all columns! */
+    text-align: center;  /* Centers the text and the golden button */
+    padding: 60px 20px;
+    background-color: rgba(0, 0, 0, 0.3); /* Subtle dark background box to make it pop */
+    border-radius: 12px;
+    border: 2px dashed var(--gold-shiny); /* A dashed gold border for that Ozian magic */
+    margin: 40px auto;
+    max-width: 700px; /* Prevents it from looking awkwardly wide on massive desktop screens */
+}
+
+#no-results-message h2 {
+    color: var(--emerald-magic);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 255, 127, 0.3);
+}
+
+#no-results-message p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--text-light);
+}
+/* =========================================
+   THE MISSION / MANIFESTO SECTION
+   ========================================= */
+.mission-container {
+    padding: 80px 5%;
+    background: linear-gradient(to bottom, var(--emerald-deep), rgba(0, 30, 15, 0.95));
+    border-top: 2px solid var(--gold-shiny);
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.mission-content {
+    max-width: 900px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4); /* Dark glass effect */
+    padding: 50px;
+    border-radius: 12px;
+    border: 1px solid var(--ruby-red);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.mission-title {
+    color: var(--gold-shiny);
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    letter-spacing: 3px;
+}
+
+.mission-lead {
+    font-size: 1.5rem;
+    color: var(--emerald-magic);
+    font-weight: bold;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.mission-content p {
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    color: var(--text-light);
+    text-align: justify; /* Gives it that formal, published manifesto look */
+    text-align-last: center; /* Centers the last line of the paragraph */
+}
+
+.mission-signoff {
+    margin-top: 40px;
+    font-family: var(--font-bangers);
+    font-size: 2rem;
+    color: var(--ruby-red);
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}

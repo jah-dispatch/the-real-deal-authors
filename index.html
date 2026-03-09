@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Never Settle | The Authenticity Database</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Project Never Settle",
+      "url": "https://jah-dispatch.github.io/the-real-deal-authors",
+      "logo": "https://yourgithubusername.github.io/never-settle/assets/images/search-glass-icon.png",
+      "description": "An indexable database of authentic #OwnVoices and genuine LGBTQ+ authors."
+    }
+    </script>
+</head>
+<body>
+
+    <header class="sticky-header">
+        <div class="header-content">
+            <h1 class="site-title"><a href="index.html">NEVER SETTLE</a></h1>
+            
+            <div class="menu-arrow-container" id="desktop-arrow">
+                <span class="gold-arrow">➔</span>
+            </div>
+
+            <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="main-nav" id="nav-links">
+                <ul>
+                    <li><a href="#database">The Database</a></li>
+                    <li><a href="#about">The Mission</a></li>
+                </ul>
+            </nav>
+        </div>
+            
+       
+    </header>
+
+    <section class="hero-section">
+        <div class="search-container">
+            <img src="assets/images/search-glass-icon.png" alt="Ruby Slipper Search Icon" class="search-icon">
+            <input type="text" id="searchInput" placeholder="Search for authentic #OwnVoices & LGBTQ+ authors..." aria-label="Search for authentic OwnVoices and LGBTQ+ authors">
+            <button class="gold-btn">Search</button>
+        </div>
+        <div class="search-tips">
+                <p><h3>Pro Tip:</h3>Search by author, title, genre, trope, or character name! This page will filter results matching what you might be on the prowl to read.</p>
+                <br>
+                <p class="submit-callout">Authors: <a href="mailto:authorjackharper@gmail.com?subject=Never Settle Author Submission">Click here to submit your work.</a></p>
+            </div>
+        <div class="filter-container" id="filterContainer">
+            </div>
+    </section>
+
+    <main class="database-container" id="database">
+        <div id="no-results-message" class="hidden">
+            <h2>Our crystal ball appears cloudy...</h2>
+            <p>No authors found for those exact filters.</p>
+            <button class="gold-btn" id="clearFiltersBtn">Clear All Filters</button>
+        </div>
+    </main>
+
+<section id="about" class="mission-container">
+        <div class="mission-content">
+            <h2 class="mission-title">TRUTH OVER TROPES.</h2>
+            <p class="mission-lead">For too long, the current literary LGBTQ+ market has been commodified, filtered through the lens of outsiders looking in, and reduced to fetishized tropes for mass consumption.</p>
+            <p class="mission-signoff">With all due respect, most of this tripe is a collosal misrepresentation of our lived experiences.</p>
+            <p>Project Never Settle is a definitive line drawn in the sand. We're reclaiming our space and now we're demanding to no longer remain an aesthetic, a trend, or a weekend fantasy drafted by authors who've never walked a single day in our shoes. The diversionary market has had its time at the microphone, prioritizing skewed prose over our genuine realities. So, now, we're taking the microphone back.</p>
+            <p>This database serves as a living index of undeniable truth. It's a curated, indexable launchpad for verified #OwnVoices and genuine LGBTQ+ authors who write about our lived experiences with the respect, grit, and authenticity they deserve. We champion the voices that aren't just writing about the community. They <em>are</em> the community.</p>
+            <p class="mission-signoff">Accept no substitutes. Demand authenticity. <strong>Never Settle.</strong></p>
+        </div>
+    </section>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <footer id="site-footer">
+        <h3 class="footer-title">OTR Publishing | Project Never Settle</h3>
+        <p class="version-control">Last Updated: <span id="lastUpdatedDate">March 9, 2026</span></p>
+        <div class="footer-links">
+            <a href="mailto:authorjackharper@gmail.com?subject=Data Privacy Request">Author Services & Data Privacy</a>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
